@@ -29,7 +29,7 @@ class AuthScreen extends StatelessWidget {
                     const AuthForm(
                       width: 218,
                       countLine: 1,
-                      maxHeight: 35,
+                      maxHeight: 45,
                       hintText: 'Никнейм...',
                     ),
                     const SizedBox(
@@ -37,7 +37,7 @@ class AuthScreen extends StatelessWidget {
                     ),
                     const AuthForm(
                       countLine: 1,
-                      maxHeight: 35,
+                      maxHeight: 45,
                       width: 218,
                       hintText: 'Пароль...',
                     ),

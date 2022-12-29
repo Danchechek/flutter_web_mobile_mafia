@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:mafia_project/ui/screens/create_club/widget/counter.dart';
 

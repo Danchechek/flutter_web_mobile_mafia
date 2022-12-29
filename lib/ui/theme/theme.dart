@@ -7,7 +7,6 @@ part 'src/theme_dark.dart';
 part 'src/theme_light.dart';
 part 'src/theme_text.dart';
 part 'src/theme_colors.dart';
-part 'src/theme_text_styles.dart';
 part 'src/default_colors.dart';
 
 
