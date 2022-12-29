@@ -139,6 +139,7 @@ class RolePart extends StatelessWidget {
                   const SizedBox(
                     height: 8,
                   ),
+                  changeable == true ?
                   ConstrainedBox(
                     constraints:
                         const BoxConstraints(minWidth: 280, maxWidth: 360),
@@ -148,7 +149,7 @@ class RolePart extends StatelessWidget {
                         getRemoveAddIcon(context, true),
                       ],
                     ),
-                  ),
+                  ): const SizedBox(),
                 ],
               ),
             ],

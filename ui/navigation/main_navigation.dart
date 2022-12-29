@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mafia_project/ui/screens/create_club/create_club.dart';
 import 'package:mafia_project/ui/screens/main/main_screen.dart';
+import 'package:mafia_project/ui/screens/splash_screen/splash_screen.dart';
 
+import '../../bloc/splash_cubit/splash_cubit.dart';
 import '../../data/calendar.dart';
+import '../../domain/factoryes/screen_factory.dart';
 import '../../utils/utils.dart';
 import '../screens/authorization/authorization.dart';
 import '../screens/club/club_screen.dart';
@@ -20,42 +24,43 @@ abstract class MainNavigationRouteNames {
   static const historyGames = '/historyGames';
   static const createClubScreen = '/clubScreen';
   static const descriptionRulesNotChangeable = '/descriptionRulesNotChangeable';
+  static const splashScreen = '/splashScreen';
 }
 
 class MainNavigation {
-  String initialRoute() => MainNavigationRouteNames.auth;
+  static final _screenFactory = ScreenFactory();
+
+  String initialRoute() => MainNavigationRouteNames.splashScreen;
 
   final routes = <String, Widget Function(BuildContext)>{
+    MainNavigationRouteNames.splashScreen: (context) {
+      return _screenFactory.makeSplashScreen();
+    },
 
     MainNavigationRouteNames.createClubScreen: (context) {
-      return const CreateClub(changeable: true,);
+      return _screenFactory.makeCreateClubScreen(true);
     },
-
-
     MainNavigationRouteNames.historyGames: (context) {
-      return HistoryGames(calendarDataList: CalendarDataList.data,);
+      return _screenFactory.makeHistoryGamesScreen();
     },
-
     MainNavigationRouteNames.detailRatingClubScreen: (context) {
-      return const DetailRatingClubScreen();
+      return _screenFactory.makeDetailRatingClubScreenScreen();
     },
-
     MainNavigationRouteNames.detailScreen: (context) {
-      return const DetailStatScreen();
+      return _screenFactory.makeDetailStatScreenScreen();
     },
 
     MainNavigationRouteNames.mainScreen: (context) {
       setOrientation(ScreenOrientation.rotating);
-      return const MainScreen();
+      return _screenFactory.makeMainScreen();
     },
 
     MainNavigationRouteNames.auth: (context) {
       setOrientation(ScreenOrientation.portraitOnly);
-      return const AuthScreen();
+      return _screenFactory.makeAuthScreen();
     },
-
     MainNavigationRouteNames.descriptionRulesNotChangeable: (context) {
-      return const CreateClub(changeable: false,);
+      return _screenFactory.makeCreateClubScreen(false);
     },
   };
 
@@ -65,9 +70,7 @@ class MainNavigation {
         final arguments = settings.arguments;
         final clubName = arguments is String ? arguments : '';
         return MaterialPageRoute(
-          builder: (context) => ClubScreen(
-            clubName: clubName,
-          ),
+          builder: (context) => _screenFactory.makeClubScreen(clubName),
         );
       default:
         const widget = Text('Navigation error!!!');

@@ -46,10 +46,13 @@ class AdditionalItem extends StatelessWidget {
                           hintText: 'Описание...',
                           colorBackground: Colors.white.withOpacity(0.3),
                         )
-                      : Text(
-                          description ?? '',
-                          style: Theme.of(context).textTheme.headline4,
-                        ),
+                      : Padding(
+                        padding: const EdgeInsets.only(top: 6.0),
+                        child: Text(
+                            description ?? '',
+                            style: Theme.of(context).textTheme.headline4,
+                          ),
+                      ),
                   Flexible(child: Container()),
                   Counter(
                     changeable: changeable,

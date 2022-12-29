@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mafia_project/ui/screens/authorization/widgets/auth_background.dart';
-import 'package:mafia_project/ui/screens/authorization/widgets/auth_forms.dart';
 import 'package:mafia_project/ui/screens/authorization/widgets/auth_header.dart';
-import 'package:mafia_project/ui/theme/theme.dart';
 import 'package:mafia_project/utils/paths.dart';
 import '../../globalwidgets/auth_form.dart';
 import '../../navigation/main_navigation.dart';
